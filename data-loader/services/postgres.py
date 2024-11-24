@@ -2,7 +2,7 @@ import logging
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("main")
 
 
 class PostgresHandler:
@@ -10,10 +10,10 @@ class PostgresHandler:
         db_cfg = configs.get("database")
 
         self.db_name = db_cfg["db_name"]
-        self.user = db_cfg["db_user"]
-        self.password = db_cfg["db_password"]
-        self.host = db_cfg["db_host"]
-        self.port = db_cfg["db_port"]
+        self.user = db_cfg["user"]
+        self.password = db_cfg["password"]
+        self.host = db_cfg["host"]
+        self.port = db_cfg["port"]
         self.connection = None
 
     def create_connection(self):
@@ -27,7 +27,7 @@ class PostgresHandler:
             )
             logger.info("database connection established successfully")
         except psycopg2.Error as e:
-            logger.info(f"error connecting to the database: {e}")
+            logger.error(f"error connecting to the database: {e}")
 
     def execute_query(self, query, params=None, fetch=False):
         if self.connection is None:

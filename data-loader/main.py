@@ -14,7 +14,9 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     log_level = logging.DEBUG if args.debug else logging.INFO
-    logger = get_logger(log_level=log_level)
+    logger = get_logger(log_level=log_level, logger_name="main")
 
     configs = Config()
-    postgres_handler = PostgresHandler(configs)
+    postgres_handler = PostgresHandler(configs.configs)
+
+    postgres_handler.create_connection()
