@@ -1,0 +1,24 @@
+lot_id,name,address,fare_per_hour,created_at,updated_at
+1,KLCC Parking,"Kuala Lumpur City Centre, 50088 Kuala Lumpur",5.00,2023-01-10 08:00:00,2023-12-15 10:30:00
+2,Mid Valley Megamall,"Mid Valley City, 58000 Kuala Lumpur",4.00,2023-01-15 09:15:00,2023-11-20 14:45:00
+3,Sunway Pyramid,"3, Jalan PJS 11/15, Bandar Sunway, 47500 Petaling Jaya",4.50,2023-01-20 10:30:00,2023-10-25 16:20:00
+4,Pavilion KL,"168, Bukit Bintang Street, 55100 Kuala Lumpur",6.00,2023-02-01 11:45:00,2023-09-30 13:10:00
+5,1 Utama Shopping Centre,"1, Lebuh Bandar Utama, 47800 Petaling Jaya",3.50,2023-02-10 12:00:00,2023-08-05 15:30:00
+6,IOI City Mall,"IOI Resort City, 62502 Putrajaya",3.00,2023-02-15 13:15:00,2023-07-10 17:45:00
+7,The Gardens Mall,"Mid Valley City, 59200 Kuala Lumpur",4.50,2023-03-01 14:30:00,2023-06-15 09:20:00
+8,Paradigm Mall,"1, Jalan SS 7/26A, Kelana Jaya, 47301 Petaling Jaya",2.50,2023-03-10 15:45:00,2023-05-20 11:35:00
+9,Berjaya Times Square,"1, Jalan Imbi, 55100 Kuala Lumpur",5.50,2023-03-15 16:00:00,2023-04-25 13:50:00
+10,Suria KLCC,"Kuala Lumpur City Centre, 50088 Kuala Lumpur",6.00,2023-04-01 08:15:00,2023-03-30 16:05:00
+11,NU Sentral,"201, Jalan Tun Sambanthan, 50470 Kuala Lumpur",4.00,2023-04-10 09:30:00,2023-02-05 18:20:00
+12,Setia City Mall,"Persiaran Setia Dagang, 40170 Shah Alam",2.00,2023-04-15 10:45:00,2023-01-10 10:15:00
+13,Plaza Low Yat,"7, Jalan Bintang, Bukit Bintang, 55100 Kuala Lumpur",3.50,2023-05-01 11:00:00,2024-01-15 12:30:00
+14,Sunway Velocity Mall,"Lingkaran SV, Sunway Velocity, 55100 Cheras",3.00,2023-05-10 12:15:00,2024-01-20 14:45:00
+15,MyTOWN Shopping Centre,"No. 6, Jalan Cochrane, 55100 Kuala Lumpur",4.00,2023-05-15 13:30:00,2024-01-25 16:00:00
+16,KL Gateway Mall,"No. 1, Jalan Kerinchi, 59200 Kuala Lumpur",3.50,2023-06-01 14:45:00,2024-02-01 09:15:00
+17,IPC Shopping Centre,"2, Jalan PJU 7/2, Mutiara Damansara, 47800 Petaling Jaya",2.50,2023-06-10 15:00:00,2024-02-05 11:30:00
+18,Tropicana Gardens Mall,"2A, Persiaran Surian, 47810 Petaling Jaya",3.00,2023-06-15 16:15:00,2024-02-10 13:45:00
+19,Central Market,"Jalan Hang Kasturi, 50050 Kuala Lumpur",4.00,2023-07-01 08:30:00,2024-02-15 15:00:00
+20,Quill City Mall,"1018, Jalan Sultan Ismail, 50250 Kuala Lumpur",3.00,2023-07-10 09:45:00,2024-02-20 17:15:00
+21,Fahrenheit 88,"179, Jalan Bukit Bintang, 55100 Kuala Lumpur",5.00,2023-07-15 10:00:00,2024-02-25 10:30:00
+22,The Starling Mall,"6, Jalan SS 21/37, Damansara Utama, 47400 Petaling Jaya",2.50,2023-08-01 11:15:00,2024-03-01 12:45:00
+23,Empire Shopping Gallery,"Jalan SS 16/1, 47500 Subang Jaya",3.50,2023-08-10 12:30:00,2024-03-05 15:00:00
