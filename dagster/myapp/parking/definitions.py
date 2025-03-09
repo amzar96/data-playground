@@ -19,6 +19,7 @@ from parking.assets import (
     dim_parking_lots,
     fact_transactions,
     gold_customer_report,
+    init_job,
 )
 
 defs = dg.Definitions(
@@ -43,5 +44,6 @@ defs = dg.Definitions(
         silver_transactions_total_fare__missing_value,
         silver_customers_mobile_no__missing_value,
     ],
+    jobs=[init_job],
     resources={"duckdb": DuckDBResource(database="mydb.duckdb")},
 )
