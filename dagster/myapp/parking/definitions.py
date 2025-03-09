@@ -43,5 +43,5 @@ defs = dg.Definitions(
         silver_transactions_total_fare__missing_value,
         silver_customers_mobile_no__missing_value,
     ],
-    resources={"duckdb": DuckDBResource(database="data/mydb.duckdb")},
+    resources={"duckdb": DuckDBResource(database="mydb.duckdb")},
 )

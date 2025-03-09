@@ -1,6 +1,15 @@
 import dagster as dg
+from dagster import op
 from parking.function import *
 from dagster_duckdb import DuckDBResource
+
+
+# @op
+# def create_duckdb_schema(duckdb: DuckDBResource):
+#     with duckdb.get_connection() as conn:
+#         for i in ["bronze", "silver", "base_silver", "gold"]:
+#             query = f"create schema if not exists {i}"
+#             conn.execute(query)
 
 
 @dg.asset(compute_kind="duckdb", group_name=bronze_group_name)

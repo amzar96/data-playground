@@ -40,7 +40,7 @@ def create_bronze_table(
         conn.execute(
             f"""
             create or replace table {schema_name}.{table_name} as (
-                select *, current_timestamp as etl_dt from read_csv_auto('data/{table_name}.csv')
+                select *, current_timestamp as etl_dt from read_csv_auto('parking/data/{table_name}.csv')
             )
             """
         )
