@@ -71,7 +71,7 @@ def create_silver_table(
                 with cte as (
                     select * from {bronze_group_name}.{table_name}
                 )
-                select *, current_timestamp as etl_dt from cte
+                select *, etl_dt as source_etl_dt, current_timestamp as etl_dt from cte
             )
             """
         )
@@ -83,7 +83,7 @@ def create_silver_table(
             f"select count(*) from {schema_name}.{table_name}"
         ).fetchone()[0]
         last_etl_dt = conn.execute(
-            f"select CAST(MAX(etl_dt) AS VARCHAR)  from {schema_name}.{table_name}"
+            f"select CAST(MAX(etl_dt_1) AS VARCHAR)  from {schema_name}.{table_name}"
         ).fetchone()[0]
 
         return dg.MaterializeResult(
