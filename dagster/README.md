@@ -5,5 +5,3 @@ ETL stands for Extract, Transform, and Load. It is a process that combines data 
 Dagster is a tool that focuses on data orchestration and is mainly built for data engineers to create data platforms. We can integrate many connectors (dbt, k8s, etc) with Dagster or even use Dagster itself for end-to-end processing
 
 It not only has capabilities to develop and schedule jobs, but it can also ensure data quality, freshness, data observability, and data asset lineage.
-
-
