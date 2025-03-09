@@ -83,14 +83,14 @@ def create_silver_table(
             f"select count(*) from {schema_name}.{table_name}"
         ).fetchone()[0]
         last_etl_dt = conn.execute(
-            f"select max(etl_dt) from {schema_name}.{table_name}"
+            f"select CAST(MAX(etl_dt) AS VARCHAR)  from {schema_name}.{table_name}"
         ).fetchone()[0]
 
         return dg.MaterializeResult(
             metadata={
                 "row_count": dg.MetadataValue.int(count),
                 "preview": dg.MetadataValue.md(preview_df.to_markdown(index=False)),
-                "last_etl_dt": dg.MetadataValue.timestamp(last_etl_dt),
+                "last_etl_dt": dg.MetadataValue.text(last_etl_dt),
             }
         )
 
