@@ -2,7 +2,7 @@ import dagster as dg
 from dagster import op, job
 from utils.function import *
 from dagster_duckdb import DuckDBResource
-from exchange_rates.assets import silver_exchange_rates
+from exchange_rates.assets import dim_exchange_rates
 
 
 @dg.asset(compute_kind="duckdb", group_name=bronze_group_name)
@@ -192,7 +192,7 @@ def fact_cars_customer(duckdb: DuckDBResource) -> dg.MaterializeResult:
 @dg.asset(
     compute_kind="duckdb",
     group_name=base_silver_group_name,
-    deps=[dim_transactions, dim_customers],
+    deps=[dim_transactions, dim_customers, dim_exchange_rates],
 )
 def fact_transactions(duckdb: DuckDBResource) -> dg.MaterializeResult:
     table_name = "fact_transactions"
@@ -206,16 +206,19 @@ def fact_transactions(duckdb: DuckDBResource) -> dg.MaterializeResult:
                     car.car_id as car_no_plat,
                     count(trans.transaction_id) as total_transactions,
                     sum(trans.total_fare) as total_fare,
+                    (cast(rt.myr_usd as float) * sum(trans.total_fare)) as total_fare_usd,
                     avg(trans.total_fare) as avg_fare,
                     max(trans.entry_time) as last_entry_time,
                     min(trans.out_time) as first_out_time,
                     current_timestamp as etl_dt
                 from {schema_name}.dim_transactions trans
                 left join {schema_name}.dim_cars car on car.car_id = trans.car_no_plat
+                left join {schema_name}.dim_exchange_rates rt on rt.date = trans.entry_time::date
                 group by 
                     trans.customer_id, 
                     trans.lot_id, 
-                    car.car_id
+                    car.car_id,
+                    rt.myr_usd
             )
         """
     return create_fact_dim(query, table_name, schema_name, duckdb)
