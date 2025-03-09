@@ -84,25 +84,3 @@ def get_today_exchange_rate():
 @dg.asset(compute_kind="duckdb", group_name="silver")
 def silver_exchange_rates(duckdb: DuckDBResource) -> dg.MaterializeResult:
     return create_silver_table("exchange_rates", duckdb)
-
-
-# @dg.asset(
-#     compute_kind="duckdb",
-#     group_name=base_silver_group_name,
-#     deps=[silver_exchange_rates],
-# )
-# def dim_exchange_rates(duckdb: DuckDBResource) -> dg.MaterializeResult:
-#     table_name = "dim_exchange_rates"
-#     schema_name = base_silver_group_name
-#     silver_schema_name = silver_group_name
-
-#     query = f"""
-#             create or replace table {schema_name}.{table_name} as (
-#                 select 
-#                     base.date,
-#                     json_extract(result, '$.myr_usd') AS myr_usd,
-#                     json_extract(result, '$.myr_sgd') AS myr_sgd
-#                 from {silver_schema_name}.exchange_rates base
-#             )
-#         """
-#     return create_fact_dim(query, table_name, schema_name, duckdb)
