@@ -39,4 +39,4 @@ class API:
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
-            return {"error": str(e)}
+            return {"error": str(e)} 
