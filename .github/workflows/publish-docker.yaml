@@ -36,7 +36,7 @@ jobs:
         tags: |
           type=sha,format=short
           type=ref,event=branch
-          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/master' }}
+          type=raw,value=dev,enable=${{ github.ref == 'refs/heads/master' }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
