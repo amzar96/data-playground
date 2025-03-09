@@ -1,9 +1,10 @@
 import json
-import duckdb
+import dagster as dg
 from utils.api import API
 from utils.common import now_date
 from dagster_duckdb import DuckDBResource
 from dagster import op, job, In, Out, Config
+from parking.function import create_silver_table
 
 
 class JobConfig(Config):
@@ -77,3 +78,8 @@ def get_today_exchange_rate():
     create_duckdb_schema()
     api_data = fetch_data_from_api()
     process_and_insert_to_duckdb(api_data)
+
+
+@dg.asset(compute_kind="duckdb", group_name="silver")
+def silver_exchange_rates(duckdb: DuckDBResource) -> dg.MaterializeResult:
+    return create_silver_table("exchange_rates", duckdb)
