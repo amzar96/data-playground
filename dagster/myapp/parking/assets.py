@@ -2,6 +2,7 @@ import dagster as dg
 from dagster import op, job
 from utils.function import *
 from dagster_duckdb import DuckDBResource
+from exchange_rates.assets import silver_exchange_rates
 
 
 @dg.asset(compute_kind="duckdb", group_name=bronze_group_name)

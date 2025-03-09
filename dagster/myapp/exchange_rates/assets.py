@@ -53,7 +53,8 @@ def process_and_insert_to_duckdb(context, api_data, duckdb: DuckDBResource):
             query = """
             CREATE TABLE IF NOT EXISTS bronze.exchange_rates (
                 date DATE,
-                result JSON
+                result JSON,
+                etl_dt TIMESTAMP
             )
             """
             conn.execute(query)
@@ -63,7 +64,7 @@ def process_and_insert_to_duckdb(context, api_data, duckdb: DuckDBResource):
                 result = json.dumps(
                     {key: value for key, value in item.items() if key != "date"}
                 )
-                insert_query = f"INSERT INTO bronze.exchange_rates (date, result) VALUES ('{date}', '{result}')"
+                insert_query = f"INSERT INTO bronze.exchange_rates (date, result, etl_dt) VALUES ('{date}', '{result}', current_timestamp)"
                 conn.execute(insert_query)
 
             context.log.info("Data inserted into DuckDB successfully")
@@ -83,3 +84,25 @@ def get_today_exchange_rate():
 @dg.asset(compute_kind="duckdb", group_name="silver")
 def silver_exchange_rates(duckdb: DuckDBResource) -> dg.MaterializeResult:
     return create_silver_table("exchange_rates", duckdb)
+
+
+# @dg.asset(
+#     compute_kind="duckdb",
+#     group_name=base_silver_group_name,
+#     deps=[silver_exchange_rates],
+# )
+# def dim_exchange_rates(duckdb: DuckDBResource) -> dg.MaterializeResult:
+#     table_name = "dim_exchange_rates"
+#     schema_name = base_silver_group_name
+#     silver_schema_name = silver_group_name
+
+#     query = f"""
+#             create or replace table {schema_name}.{table_name} as (
+#                 select 
+#                     base.date,
+#                     json_extract(result, '$.myr_usd') AS myr_usd,
+#                     json_extract(result, '$.myr_sgd') AS myr_sgd
+#                 from {silver_schema_name}.exchange_rates base
+#             )
+#         """
+#     return create_fact_dim(query, table_name, schema_name, duckdb)
