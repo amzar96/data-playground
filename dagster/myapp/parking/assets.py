@@ -1,6 +1,6 @@
 import dagster as dg
 from dagster import op, job
-from parking.function import *
+from utils.function import *
 from dagster_duckdb import DuckDBResource
 
 

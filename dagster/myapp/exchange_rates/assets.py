@@ -1,10 +1,10 @@
 import json
 import dagster as dg
 from utils.api import API
+from utils.function import *
 from utils.common import now_date
 from dagster_duckdb import DuckDBResource
 from dagster import op, job, In, Out, Config
-from parking.function import create_silver_table
 
 
 class JobConfig(Config):
