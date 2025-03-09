@@ -17,7 +17,7 @@ def create_duckdb_schema(context):
     for i in ["bronze", "silver", "base_silver", "gold"]:
         query = f"create schema if not exists {i}"
         connection.execute(query)
-        
+
     connection.close()
 
     context.log.info("Schema created in DuckDB.")
