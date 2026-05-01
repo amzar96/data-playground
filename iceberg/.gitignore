@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environment
+.venv/
+
+# Environment — contains S3 credentials
+.env
+
+# Iceberg catalog — local state, regenerated on first run
+catalog.db
+
+# Generated data
+data/
+
+# DuckDB files
+*.duckdb
+
+# Ruff cache
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

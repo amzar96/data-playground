@@ -1,0 +1,44 @@
+[project]
+name = "iceberg"
+version = "0.1.0"
+description = "Learning Apache Iceberg — ingest, transform, load pipeline"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pyiceberg[pandas,pyarrow,s3fs,sql-sqlite]>=0.11.1",
+    "duckdb>=1.2.0",
+    "typer>=0.15.0",
+    "faker>=37.0.0",
+    "pydantic-settings>=2.9.0",
+]
+
+[project.scripts]
+generate-csv = "src.scripts.generate_csv:app"
+pipeline = "src.main:app"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.0",
+]
+
+[tool.uv]
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
